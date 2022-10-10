@@ -23,13 +23,13 @@ public class Ej02 {
         int x = Integer.parseInt(JOptionPane.showInputDialog("Pon un número entero"));
         resultado = x>=135 ? "mayor" : "menor";
         JOptionPane.showMessageDialog(null, """
-                                            El número %d es %s que 135
+                                            El número %d es %s que 135 
                                             """.formatted(x, resultado));
         
         if (x>=0) {
-            JOptionPane.showMessageDialog(null, "mayor que cero");
+            JOptionPane.showMessageDialog(null, "el numero es mayor que cero");
         } else {
-            JOptionPane.showMessageDialog(null, "menor que cero");
+            JOptionPane.showMessageDialog(null, "el numero es menor que cero");
         }
         
         int valorAbsoluto = Integer.parseInt(JOptionPane.showInputDialog("Pon un número entero"));
