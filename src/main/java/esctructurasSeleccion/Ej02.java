@@ -19,6 +19,7 @@ Guardar el valor absoluto de un número entero en una variable entera (sin usar 
 */
 public class Ej02 {
     public static void main(String[] args) {
+        // a
         String resultado;
         int x = Integer.parseInt(JOptionPane.showInputDialog("Pon un número entero"));
         resultado = x>=135 ? "mayor" : "menor";
@@ -26,12 +27,12 @@ public class Ej02 {
                                             El número %d es %s que 135 
                                             """.formatted(x, resultado));
         
-        if (x>=0) {
-            JOptionPane.showMessageDialog(null, "el numero es mayor que cero");
-        } else {
-            JOptionPane.showMessageDialog(null, "el numero es menor que cero");
-        }
+        // b
+        String resultadoB; 
+        resultadoB = x>=0 ? "el numero es mayor que cero" : "el numero es menor que cero";
+        JOptionPane.showMessageDialog(null, resultadoB);
         
+        // c
         int valorAbsoluto = Integer.parseInt(JOptionPane.showInputDialog("Pon un número entero"));
         valorAbsoluto=valorAbsoluto<0 ? valorAbsoluto*-1 : valorAbsoluto;
         
