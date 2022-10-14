@@ -22,19 +22,38 @@ public class Ej07 {
         
         switch (opcion) {
             case "cuadrado":
+                double ladoCuadrado=Double.parseDouble(JOptionPane.showInputDialog(null,
+                        "Has seleccionado calcular el area de un cuadrado",
+                        "Dame un lado"));
+                double areaCuadrado= Math.pow(ladoCuadrado, 2);
                 JOptionPane.showMessageDialog(null, """
-                                                    Has seleccionado calcular el area de un cuadrado
-                                                    """);
+                                                    El area del cudrado es %.2f
+                                                    """.formatted(areaCuadrado));
                 break;
             case "triangulo":
+                double alturaTriangulo= Double.parseDouble(JOptionPane.showInputDialog(null, 
+                        "Has seleccionado calcular el area de un triangulo", 
+                        "Dame la altura"));
+                double baseTriangulo= Double.parseDouble(JOptionPane.showInputDialog(null, 
+                        "Has seleccionado calcular el area de un triangulo", 
+                        "Dame la base"));
+                
+                double areaTringulo=(baseTriangulo*alturaTriangulo)/2;
+                
                 JOptionPane.showMessageDialog(null, """
-                                                    Has seleccionado calcular el area de un triangulo
-                                                    """);
+                                                    El area del triangulo es %.2f
+                                                    """.formatted(areaTringulo));
                 break;
+                        
             case "circulo":
+                 double radioCirculo=Double.parseDouble(JOptionPane.showInputDialog(
+                        null, 
+                        "Has seleccionado el area de un circulo", 
+                        "Dame el radio"));
+                double areaCirculo= Math.PI*(Math.pow(radioCirculo, 2));
                 JOptionPane.showMessageDialog(null, """
-                                                    Has seleccionado calcular el area de un circulo
-                                                    """);
+                                                    El area del circulo es %.2f
+                                                    """.formatted(areaCirculo));
                 break;
             case "finalizar":
                 JOptionPane.showMessageDialog(null, """
