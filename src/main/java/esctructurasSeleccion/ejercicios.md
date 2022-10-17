@@ -52,7 +52,7 @@ public class Tutorial {
     <li>c: Esta todo vendido</li>
   </ul>
 
-8.- ¿Qué realiza el siguiente programa Java?
+<h2>8.- ¿Qué realiza el siguiente programa Java?</h2>
 
 public class Curso {
 
@@ -84,7 +84,7 @@ public class Curso {
     <li>Te dice a que departamento pertenece el codigo B, es decir, Recursos humanos</li>
   </ul>
 
-9.- ¿Cuánto vale variable2 al finalizar la ejecución del switch?
+<h2>9.- ¿Cuánto vale variable2 al finalizar la ejecución del switch?</h2>
 int variable=3, variable2;
 switch(variable)
     
