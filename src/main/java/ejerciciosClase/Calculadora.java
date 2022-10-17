@@ -14,9 +14,9 @@ public class Calculadora {
     public static void main(String[] args) {
         double resultado = 0;
         double operando1= Double.parseDouble(
-                JOptionPane.showInputDialog("introduce operador 1"));
+                JOptionPane.showInputDialog("Introduce operador 1"));
         double operando2= Double.parseDouble(
-                JOptionPane.showInputDialog("introduce operador 2"));
+                JOptionPane.showInputDialog("Introduce operador 2"));
         
         String menu= 
                 """
