@@ -30,6 +30,7 @@ public class Ej07 {
                                                     El area del cudrado es %.2f
                                                     """.formatted(areaCuadrado));
                 break;
+                
             case "triangulo":
                 double alturaTriangulo= Double.parseDouble(JOptionPane.showInputDialog(null, 
                         "Has seleccionado calcular el area de un triangulo", 
