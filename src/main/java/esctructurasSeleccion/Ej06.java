@@ -31,9 +31,7 @@ public class Ej06 {
                 null, areas, areas[0]);
         final String TEXTO="Has seleccionado calcular el area de un ";
         if (opcion=="cuadrado") {
-            JOptionPane.showMessageDialog(null, TEXTO + opcion);
-            System.out.println("Dame el lado");
-            double ladoCuadrado= teclado.nextDouble();
+            double ladoCuadrado= 12;
             double areaCuadrado= Math.pow(ladoCuadrado, 2);
             System.out.println("El area del cuadrado es "+areaCuadrado);
         } 
