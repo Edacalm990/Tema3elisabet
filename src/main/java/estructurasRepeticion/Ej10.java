@@ -17,5 +17,18 @@ public class Ej10 {
             System.out.println(letra);        
         }
         
+        for (char letra = 'a' ;  letra <= 'z'; letra++) {
+            System.out.println(letra);
+        }
+        
+        for (char letra = 97 ;  letra <= 122; letra++) {
+            if (letra == 111){
+                char especial = 241;
+                System.out.println(especial);
+            }
+            System.out.println(letra);
+            
+        }
+        
     }
 }

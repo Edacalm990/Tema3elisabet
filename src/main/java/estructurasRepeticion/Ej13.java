@@ -22,6 +22,11 @@ public class Ej13 {
                                """.formatted(letra, letraInt));
            i++;
         } while (i<ABC.length());
+        
+        for (char letra = 97; letra <= 122; letra ++) {
+            int caracter2 = (int)letra;
+            System.out.println("la letra "+ letra + " es el caracter " + caracter2);
+        }
 
     }
 }

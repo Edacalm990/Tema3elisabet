@@ -26,7 +26,7 @@ public class Ej03B {
         final double BENEFICIO_PRODUCCION_T1_T2=0.65;
         // beneficio que se desea obtener
         final double BENEFICIO_A_OBTENER=2500.0;
-        // rango de precios
+        // rango de preciosaEsteponeraMejorado
         final double PRECIO_INICIO=0.1;
         final double PRECIO_FINAL=1;
         // declaración e inicializamos las variables 
@@ -74,14 +74,14 @@ public class Ej03B {
                         yield precioUnitarioProduccion + (precioUnitarioProduccion * BENEFICIO_PRODUCCION_T1_T2);
                     }
                     case "M2" -> {
-                        producto="Turrón clásico";
+                        producto="Mazapanes";
                         precioUnitarioProduccion = precioMateriaPrima + COSTE_MANO_P1_T2_M2;
                         yield precioUnitarioProduccion + (precioUnitarioProduccion * BENEFICIO_PRODUCCION_M1_M2_P1);
                     }
                     case "T2" -> {
-                        producto="Mazapanes";
+                        producto="Turrón clásico";
                         precioUnitarioProduccion = precioMateriaPrima + COSTE_MANO_P1_T2_M2;
-                        yield precioUnitarioProduccion = (precioUnitarioProduccion * BENEFICIO_PRODUCCION_T1_T2);
+                        yield precioUnitarioProduccion + (precioUnitarioProduccion * BENEFICIO_PRODUCCION_T1_T2);
                     }
                     default ->
                         0;

@@ -35,7 +35,7 @@
     }
     
 <ul>
-  <li>Respuesta =  Mientras x sea menor dle número introducido por consola imprimira x - (x+1) y sumara 1 a x </li>
+  <li>Respuesta =  Mientras x sea menor que el número introducido por consola imprimira x - (x+1) y sumara 1 a x </li>
 </ul>
 
 <h2>4.- Intenta averiguar qué realiza el siguiente programa, sin implementarlo. Implementa el programa en el entorno y compara tus resultados con la ejecución.</h2>
@@ -59,3 +59,17 @@
   <li>Respuesta =  Aquí hay dos bucles, el bucle while dice mientras numero sea menor de 11 (empieza en 1) imprimirá el valor de numero e incrementará su valor en 1 hasta llegar a 11, cuando llegue a 11 pasará al do que dice imprime numero en pantalla menos 1 y después comprueba si numero es mayor a 1 si es mayor volverá ha hacerlo hasta que numero sea menor o igual a 1</li>
 </ul>
 
+<h2>Intenta averiguar qué realiza el siguiente programa, sin implementarlo. Implementa el programa en el entorno y compara tus resultados con la ejecución.</h2>
+
+     public class Buclefor {
+        public static void main (public static void main ()){
+            int j=1;
+            for (int=-13; i<=-10; i++) {
+            j++;
+            System.out.println(j);
+     }
+
+    }
+
+
+}

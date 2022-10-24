@@ -20,5 +20,10 @@ public class Ej12 {
                                La letra %s se corresponde con el char %d
                                """.formatted(letra, letraInt));        
         }
+        
+        
+        
+        
+        
     }
 }
