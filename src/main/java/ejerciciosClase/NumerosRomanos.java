@@ -53,7 +53,7 @@ public class NumerosRomanos {
                                                                  """);
                     int contador=0;
                     for (int i = 0; i < palabra.length(); i++) {
-                        char caracter = palabra.charAt(i);
+                        char caracter = palabra.toLowerCase().charAt(i);
                         
                         if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u') {
                             contador ++;
