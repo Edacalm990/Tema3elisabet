@@ -55,9 +55,7 @@
          }
     }
 
-<ul>
-  <li>Respuesta =  Aquí hay dos bucles, el bucle while dice mientras numero sea menor de 11 (empieza en 1) imprimirá el valor de numero e incrementará su valor en 1 hasta llegar a 11, cuando llegue a 11 pasará al do que dice imprime numero en pantalla menos 1 y después comprueba si numero es mayor a 1 si es mayor volverá ha hacerlo hasta que numero sea menor o igual a 1</li>
-</ul>
+
 
 <h2>Intenta averiguar qué realiza el siguiente programa, sin implementarlo. Implementa el programa en el entorno y compara tus resultados con la ejecución.</h2>
 
@@ -68,8 +66,9 @@
             j++;
             System.out.println(j);
      }
-
+    }
     }
 
-
-}
+<ul>
+  <li>Respuesta =   imprimira j 3 veces</li>
+</ul>
