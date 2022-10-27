@@ -31,12 +31,12 @@ public class Ej3D_bisiestos {
                                                               """));
             // si el año introducido es negativo lo pasamos a positivo
             if (anno < 0) {  
-                anno = -(anno);
+                anno = Math.abs(anno);
             };
             // comprobamos si es bisiesto
             // almacenamos el texto correspondiente
             bisiestoTexto = 
-                    ((anno%4==0) && (anno%100!=0) && (anno%400!=0)) 
+                    ((anno%4==0) && (anno%100!=0) || (anno%400!=0)) 
                     ? "es bisiesto"  : "no es bisiesto" ;
             
             JOptionPane.showMessageDialog(null, """

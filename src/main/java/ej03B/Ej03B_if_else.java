@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author elisabet
  */
 
-public class Ej03B {
+public class Ej03B_if_else {
 
     public static void main(String[] args) {
         
@@ -34,6 +34,7 @@ public class Ej03B {
         double precioVentaUnitario=0;
         double precioUnitarioProduccion=0;
         int unidadesObtener=0;
+        double costeManoObra;
 
         // le pedidmo al usuario que introduzca un codigo
         String productoMin = JOptionPane.showInputDialog("""

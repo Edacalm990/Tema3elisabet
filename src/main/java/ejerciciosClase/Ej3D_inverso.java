@@ -26,7 +26,11 @@ public class Ej3D_inverso {
             Scanner teclado = new Scanner(System.in);
             System.out.println("Introduce una palabra");
             String palabra = (teclado.nextLine());
-
+            
+            StringBuilder palabraInvertida2 = new StringBuilder(palabra);     
+            palabraInvertida2=palabraInvertida2.reverse();
+ 
+            
             // compara la variable palabra con "salir", si es true da como resultado 0
             if (palabra.compareToIgnoreCase("salir") == 0) {
                 // introducimos true en la variable salir, aquí el programa parará
@@ -40,6 +44,8 @@ public class Ej3D_inverso {
                     // vamos creando la palabra con cada caracter (comenzando por el final)
                     palabraInvertida += palabra.charAt(i - 1);
                 }
+                
+                
                 // mostramos el resultado
                 System.out.println("""
                                La palabra '%s' si la invertimos es '%s' 
