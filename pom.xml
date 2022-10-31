@@ -11,4 +11,5 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>elisabet.Tema4elisabet</exec.mainClass>
     </properties>
+    <name>Tema3elisabet</name>
 </project>

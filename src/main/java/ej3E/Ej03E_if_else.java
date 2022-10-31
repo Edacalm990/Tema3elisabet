@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author elisabet
  */
-public class Ej3E {
+public class Ej03E_if_else {
 
     public static void main(String[] args) {
         // coste mano de obra dependien del tipo de producto
@@ -32,6 +32,12 @@ public class Ej3E {
         String opcion;
         String producto;
         double costeManoObra = 0;
+        final String M1="Mantecado de Limón";
+        final String P1="Polvorón";
+        final String T1="Turrón de chocolate";
+        final String T2="Turrón clásico";
+        final String M2="Mazapanes";
+        
 
         do {
             // solicitamos la opcion 
@@ -47,13 +53,13 @@ public class Ej3E {
                     // solicitamos el producto
                     // si no está entre las opciones se vuelve a solicitar, si la opcion es salir el programa se para
                     String productoMin = JOptionPane.showInputDialog("""
-                                                    M1 -> Mantecados de Limón
-                                                    P1 -> Polvorones
-                                                    T1 -> Turrón de chocolate
-                                                    T2 -> Turrón clásico
-                                                    M2 -> Mazapanes
+                                                    M1 -> %s
+                                                    P1 -> %s
+                                                    T1 -> %s
+                                                    T2 -> %s
+                                                    M2 -> %s
                                                     SALIR -> Salir del programa
-                                                    """);
+                                                    """.formatted(M1, P1, T1, T2, M2));
                     producto = productoMin.toUpperCase();
                     // si el producto = "salir" el programa sale sin hacer nada mas cambiado la variable opcion
                     if (producto.equalsIgnoreCase("salir")) {
@@ -86,6 +92,7 @@ public class Ej3E {
                                                 default ->
                                                     0;
                                             };
+                                            
                                             // cuantas unidades se deben obtener para conseguir el beneficio requerido (2500€)
                                             unidadesObtener = (int) Math.ceil(BENEFICIO_A_OBTENER / (precioVentaUnitario - precioUnitarioProduccion));
                                             JOptionPane.showMessageDialog(null, """

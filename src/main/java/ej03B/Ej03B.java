@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author elisabet
  */
 
-public class Ej03B_if_else {
+public class Ej03B {
 
     public static void main(String[] args) {
         
