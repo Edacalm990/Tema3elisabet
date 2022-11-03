@@ -23,14 +23,13 @@ import javax.swing.JOptionPane;
 //10. calcular unidades
 public class Ej03E_metodos {
 
-
     public static void main(String[] args) {
         final String MENU = """
                      ¿Qué deseas hacer?
                      calcular -> Realizar cálculos
                      salir -> Salir del programa
                      """;
-        final String MENU_PRODUCTO ="""
+        final String MENU_PRODUCTO = """
                                                     M1 -> Mantecados de Limón
                                                     P1 -> Polvorones
                                                     T1 -> Turrón de chocolate
@@ -45,7 +44,7 @@ public class Ej03E_metodos {
         final String MANO_OBRA = """
                                  Introduce el coste de la mano de obra
                                  """;
-        
+
         final String MENSAJE_FINAL = """
                         El precio de la opcion %s: 
                         Tiene un coste de produccion de %.2f
@@ -71,40 +70,41 @@ public class Ej03E_metodos {
         double precioVentaUnitario = 0;
         double precioUnitarioProduccion = 0;
         int unidadesObtener = 0;
-        int opcion = 0;
-        int producto = -1;
+        int opcion = -1;
+        int producto = 0;
         double costeManoObra = 0;
 
         do {
             // leer menu y filtrar
             opcion = opcionValida(MENU, "MENU");
-            
-            if (opcion!=-1){
-            // leer menu producto y filtrar
-            producto = opcionValida(MENU_PRODUCTO, "");
-            
-            if (producto!=-1){
-            // pedir materia prima y filtrar
-            precioMateriaPrima = numeroEntreRangos(PRECIO_INICIO, PRECIO_FINAL, MATERIA_PRIMA);
-            // pedir mano de obra y filtrar
-            costeManoObra = numeroEntreRangos(COSTE_MANO_INICIO, COSTE_MANO_FIN, MANO_OBRA);
-            // calcular precio unitario
-            precioUnitarioProduccion = precioUnitarioProduccion(precioMateriaPrima, costeManoObra);
-            // calcular precio de venta unitario
-            precioVentaUnitario = precioVentaUnitario(producto, precioUnitarioProduccion, BENEFICIO_1, BENEFICIO_2);
-            // calcular cuantas unidades se deben obtener para conseguir el beneficio requerido (2500€)
-            unidadesObtener = unidadesObtener(precioVentaUnitario, precioUnitarioProduccion, BENEFICIO_A_OBTENER);
-            
-            JOptionPane.showMessageDialog(null, """
+
+            if (opcion != 0) {
+                // leer menu producto y filtrar
+                producto = opcionValida(MENU_PRODUCTO, "");
+
+                if (producto != 0) {
+                    // pedir materia prima y filtrar
+                    precioMateriaPrima = numeroEntreRangos(PRECIO_INICIO, PRECIO_FINAL, MATERIA_PRIMA);
+                    // pedir mano de obra y filtrar
+                    costeManoObra = numeroEntreRangos(COSTE_MANO_INICIO, COSTE_MANO_FIN, MANO_OBRA);
+                    // calcular precio unitario
+                    precioUnitarioProduccion = precioUnitarioProduccion(precioMateriaPrima, costeManoObra);
+                    // calcular precio de venta unitario
+                    precioVentaUnitario = precioVentaUnitario(producto, precioUnitarioProduccion, BENEFICIO_1, BENEFICIO_2);
+                    // calcular cuantas unidades se deben obtener para conseguir el beneficio requerido (2500€)
+                    unidadesObtener = unidadesObtener(precioVentaUnitario, precioUnitarioProduccion, BENEFICIO_A_OBTENER);
+
+                    JOptionPane.showMessageDialog(null, """
                         Tiene un coste de produccion de %.2f
                         Tiene un precio de venta de %.2f
                         ------------------------------------------------------
                         Para llegar a un beneficio neto de 2500 € 
                         hay que producir %d unidades
-                        """.formatted(precioUnitarioProduccion, precioVentaUnitario, unidadesObtener)); 
-            }}
-            
-        } while (opcion!=-1 && producto!=-1 || producto!=-1);
+                        """.formatted(precioUnitarioProduccion, precioVentaUnitario, unidadesObtener));
+                }
+            }
+
+        } while (opcion != 0 && producto != 0 || producto != 0);
 
     }
 
@@ -128,7 +128,7 @@ public class Ej03E_metodos {
         String mensaje = texto.isBlank() ? "Introduce una palabra" : texto;
         return JOptionPane.showInputDialog(mensaje);
     }
-         
+
     private static double pedirNumeroDouble(String texto) {
         String mensaje = texto.isBlank() ? "Introduce un número" : texto;
         final String FRASE_ERROR = "El número introducido no es correcto";
@@ -141,91 +141,91 @@ public class Ej03E_metodos {
         } while (true);
     }
 
-    
-    private static boolean rango(int num, int min, int max) {
-        return (num >= min && num <= max);
-    }
-
-    private static boolean rango(double num, double min, double max) {
+    private static boolean esRango(double num, double min, double max) {
         return (num >= min && num <= max);
     }
 
     private static int opcionValida(String text, String tipo) {
         final String FRASE_ERROR = "La opción no está disponible, porfavor elije otra";
-        int resultado;
+        int resultado=0;
         String classificar;
+        String opcion;
         do {
-                
-                String opcion = pedirPalabra(text);
-                if (opcion.equalsIgnoreCase("salir")) {
-                    return -1;
-                } else {
-                    try {
-                        classificar =  (tipo.equalsIgnoreCase("MENU")) 
-                                ? clasificarMenu(opcion) 
-                                : clasificarMenuProducto(opcion);
-                        resultado = Integer.parseInt(classificar);
-                        return resultado;
-                    } catch (Exception e) {
-                        mensaje(FRASE_ERROR);
-                    }                  
+
+            opcion = pedirPalabra(text);
+                try {
+                    classificar = (tipo.equalsIgnoreCase("MENU"))
+                            ? clasificarMenu(opcion)
+                            : clasificarMenuProducto(opcion);
+                    resultado = Integer.parseInt(classificar);
+                    
+                } catch (Exception e) {
+                    mensaje(FRASE_ERROR);
                 }
-        } while (true);
+                return resultado;
+        } while (!opcion.equalsIgnoreCase("salir"));
     }
 
     private static double numeroEntreRangos(double min, double max, String texto) {
         final String FRASE_ERROR = """
                                   El numero no es correcto, debe estar entre %.2f y %.2f
-                                   """.formatted(min,max);
+                                   """.formatted(min, max);
         double num = 0;
         boolean rango;
 
         do {
             num = pedirNumeroDouble(texto);
-            rango = rango(num, min, max);
+            rango = esRango(num, min, max);
             if (!rango) {
-            mensaje(FRASE_ERROR);
+                mensaje(FRASE_ERROR);
             };
-            
+
         } while (!rango);
 
         return num;
     }
-    
-    private static String clasificarMenu (String opcion){
+
+    private static String clasificarMenu(String opcion) {
         return switch (opcion.toUpperCase()) {
-            case  "CALCULAR"-> "1";             
-            default -> "noValido";
+            case "CALCULAR" ->
+                "1";
+            case "SALIR" ->
+                "0";
+            default ->
+                "noValido";
         };
     }
 
-    private static String clasificarMenuProducto (String opcion){
+    private static String clasificarMenuProducto(String opcion) {
         return switch (opcion.toUpperCase()) {
-            case  "M1", "M2", "P1"-> "1";
-            case "T1", "T2" -> "2";               
-            default -> "noValido";
+            case "M1", "M2", "P1" ->
+                "1";
+            case "T1", "T2" ->
+                "2";
+            case "SALIR" ->
+                "0";
+            default ->
+                "noValido";
         };
     }
-    
-    
-    
-    private static double precioUnitarioProduccion (double precioMateriaPrima, double costeManoObra) {
-        return precioMateriaPrima+costeManoObra;
+
+    private static double precioUnitarioProduccion(double precioMateriaPrima, double costeManoObra) {
+        return precioMateriaPrima + costeManoObra;
     }
-    
+
     private static double precioVentaUnitario(int producto, double precioUnitarioProduccion, double beneficio1, double beneficio2) {
         return switch (producto) {
-            case 1 -> (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio1));
-            case 2 ->  (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio2));
-            default -> 0;
+            case 1 ->
+                (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio1));
+            case 2 ->
+                (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio2));
+            default ->
+                0;
         };
     }
-    
-    private static int unidadesObtener (double precioVentaUnitario, double precioUnitarioProduccion, double beneficio) {
+
+    private static int unidadesObtener(double precioVentaUnitario, double precioUnitarioProduccion, double beneficio) {
         return (int) Math.ceil(beneficio / (precioVentaUnitario - precioUnitarioProduccion));
     }
-    
-   
-    
 
 }
