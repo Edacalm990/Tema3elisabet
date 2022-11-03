@@ -27,7 +27,7 @@ public class Ej03E_metodos {
     public static void main(String[] args) {
         final String MENU = """
                      ¿Qué deseas hacer?
-                     1-> Realizar cálculos
+                     calcular -> Realizar cálculos
                      salir -> Salir del programa
                      """;
         final String MENU_PRODUCTO ="""
@@ -72,17 +72,18 @@ public class Ej03E_metodos {
         double precioUnitarioProduccion = 0;
         int unidadesObtener = 0;
         int opcion = 0;
-        int producto = 0;
+        int producto = -1;
         double costeManoObra = 0;
-        boolean salir=false;
 
         do {
             // leer menu y filtrar
-            opcion = opcionValida(MENU);
-            if (opcion==-1) {break;}
+            opcion = opcionValida(MENU, "MENU");
+            
+            if (opcion!=-1){
             // leer menu producto y filtrar
-            producto = opcionValida(MENU_PRODUCTO);
-           if (producto==-1) {break;}           
+            producto = opcionValida(MENU_PRODUCTO, "");
+            
+            if (producto!=-1){
             // pedir materia prima y filtrar
             precioMateriaPrima = numeroEntreRangos(PRECIO_INICIO, PRECIO_FINAL, MATERIA_PRIMA);
             // pedir mano de obra y filtrar
@@ -100,9 +101,10 @@ public class Ej03E_metodos {
                         ------------------------------------------------------
                         Para llegar a un beneficio neto de 2500 € 
                         hay que producir %d unidades
-                        """.formatted(precioUnitarioProduccion, precioVentaUnitario, unidadesObtener));
+                        """.formatted(precioUnitarioProduccion, precioVentaUnitario, unidadesObtener)); 
+            }}
             
-        } while (true);
+        } while (opcion!=-1 && producto!=-1 || producto!=-1);
 
     }
 
@@ -148,17 +150,20 @@ public class Ej03E_metodos {
         return (num >= min && num <= max);
     }
 
-    private static int opcionValida(String text) {
+    private static int opcionValida(String text, String tipo) {
         final String FRASE_ERROR = "La opción no está disponible, porfavor elije otra";
         int resultado;
         String classificar;
         do {
+                
                 String opcion = pedirPalabra(text);
                 if (opcion.equalsIgnoreCase("salir")) {
                     return -1;
                 } else {
                     try {
-                        classificar = clasificarMenuProducto(opcion);
+                        classificar =  (tipo.equalsIgnoreCase("MENU")) 
+                                ? clasificarMenu(opcion) 
+                                : clasificarMenuProducto(opcion);
                         resultado = Integer.parseInt(classificar);
                         return resultado;
                     } catch (Exception e) {
@@ -186,15 +191,23 @@ public class Ej03E_metodos {
 
         return num;
     }
-
-    private static String clasificarMenuProducto (String opcion){
+    
+    private static String clasificarMenu (String opcion){
         return switch (opcion.toUpperCase()) {
-            case "1" -> "1";
-            case  "M1", "M2", "P1"-> "2";
-            case "T1", "T2" -> "3";               
+            case  "CALCULAR"-> "1";             
             default -> "noValido";
         };
     }
+
+    private static String clasificarMenuProducto (String opcion){
+        return switch (opcion.toUpperCase()) {
+            case  "M1", "M2", "P1"-> "1";
+            case "T1", "T2" -> "2";               
+            default -> "noValido";
+        };
+    }
+    
+    
     
     private static double precioUnitarioProduccion (double precioMateriaPrima, double costeManoObra) {
         return precioMateriaPrima+costeManoObra;
@@ -202,8 +215,8 @@ public class Ej03E_metodos {
     
     private static double precioVentaUnitario(int producto, double precioUnitarioProduccion, double beneficio1, double beneficio2) {
         return switch (producto) {
-            case 2 -> (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio1));
-            case 3 ->  (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio2));
+            case 1 -> (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio1));
+            case 2 ->  (precioUnitarioProduccion + (precioUnitarioProduccion * beneficio2));
             default -> 0;
         };
     }
