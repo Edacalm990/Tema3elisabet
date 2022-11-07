@@ -18,15 +18,15 @@ public class Utilidades {
     private static Random random = new Random();
 
     // pedir y comprobar si es entero
-    public static int pedirEntero(String texto, String opcion) {
+    public static int pedirEntero(String texto, String opcionJOption) {
         int numero = 0;
         String frase = texto.isBlank() ? "Introduce un número sin decimales" : texto;
         String fraseError = "Es incorrecto, debe ser un número entero, introduce un número";
         do {
             try {
 
-                if (!opcion.equalsIgnoreCase("j")) {
-                    mostrarMensaje(opcion, frase);
+                if (!opcionJOption.equalsIgnoreCase("j")) {
+                    mostrarMensaje(opcionJOption, frase);
                     numero = teclado.nextInt();
                 } else {
                     numero = Integer.parseInt(JOptionPane.showInputDialog(frase));
@@ -35,7 +35,7 @@ public class Utilidades {
             } catch (Exception e) {
                 System.out.println(e);
                 teclado.nextLine();
-                mostrarMensaje(opcion, fraseError);
+                mostrarMensaje(opcionJOption, fraseError);
             }
         } while (true);
 
@@ -43,24 +43,24 @@ public class Utilidades {
     }
 
     // pedir Entero y positivo
-    public static int esEnteroPositivo(String texto, String opcion) {
+    public static int esEnteroPositivo(String texto, String opcionJOption) {
         String frase = "";
         if (!texto.isBlank()) {
             frase = texto;
         }
 
-         return Math.abs(pedirEntero(frase, opcion));
+         return Math.abs(pedirEntero(frase, opcionJOption));
     }
 
     // pedir y comprobar si es double
-    public static double pedirDouble(String texto, String opcion) {
+    public static double pedirDouble(String texto, String opcionJOption) {
         double numero = 0;
         String frase = texto.isBlank() ? "Introduce un número" : texto;
         String fraseError = "Dato incorrecto, introduce un número";
         do {
             try {
-                if (!opcion.equalsIgnoreCase("j")) {
-                    mostrarMensaje(opcion, frase);
+                if (!opcionJOption.equalsIgnoreCase("j")) {
+                    mostrarMensaje(opcionJOption, frase);
                     numero = teclado.nextInt();
                 } else {
                     numero = Double.parseDouble(JOptionPane.showInputDialog(frase));
@@ -69,7 +69,7 @@ public class Utilidades {
                 break;
             } catch (Exception e) {
                 teclado.nextLine();
-                mostrarMensaje(opcion, fraseError);
+                mostrarMensaje(opcionJOption, fraseError);
             }
         } while (true);
 
@@ -88,7 +88,7 @@ public class Utilidades {
     }
 
     // pedir un número entero, y esta en un rango
-    public static int pedirEnteroEnRango(int min, int max, String texto, String opcion) {
+    public static int pedirEnteroEnRango(int min, int max, String texto, String opcionJOption) {
         int numero;
         boolean respuesta;
         String mensajeError = """
@@ -96,11 +96,11 @@ public class Utilidades {
                                    el rango debe estar entre %.2f y %.2f
                                    """.formatted(min, max);
         do {
-            numero = pedirEntero(texto, opcion);
+            numero = pedirEntero(texto, opcionJOption);
             respuesta = rango(numero, min, max);
 
             if (!respuesta) {
-                mostrarMensaje(opcion, mensajeError);
+                mostrarMensaje(opcionJOption, mensajeError);
             }
 
         } while (!respuesta);
@@ -138,8 +138,11 @@ public class Utilidades {
     }
 
     // generar número aleatorio double entre rangos double
-    public static double generarNumRandomEntreRango(double num1, double num2) {
+    public static double generarNumRandomEntreRango(double num1, double num2Real) {
+        double num2=sum1DecimalDouble(num2Real);
+        System.out.println(num2Real + " " + num2);
         return random.nextDouble(num1, num2);
+       
     }
 
     // como mostrar mensaje
@@ -149,6 +152,40 @@ public class Utilidades {
         } else {
             System.out.println(mensaje);
         }
+    }
+    
+    public static double sum1DecimalDouble (double num){     
+        String numString =String.valueOf(num);
+        int contador=0;
+        String sumRandom="";
+        double resto=0;
+        double resultado;
+
+        for (int i = (numString.length()-1); i != 0; i--) {
+            char caracter = numString.charAt(i);
+            
+            if (caracter=='.'){
+            break;
+            }
+            contador ++;
+        }
+        
+        for (int i = 0; i <= contador; i++) {
+            
+            if(i==1){    
+            sumRandom+=".";
+            sumRandom +="0";
+            } else if(i==contador){
+            sumRandom+="1";
+            } else {
+            sumRandom +="0";
+            }
+        }
+        
+        resto = Double.parseDouble(sumRandom);
+        resultado = resto+num;
+        return resultado;
+    
     }
     
     
